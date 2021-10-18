@@ -1,0 +1,39 @@
+-- Filter the data and create a new DataFrame or table to retrieve all the rows where the total_votes count is equal to or 
+-- greater than 20 to pick reviews that are more likely to be helpful and to avoid having division by zero errors later on.
+
+SELECT * INTO VINE_TABLE_NEW FROM VINE_TABLE WHERE TOTAL_VOTES >= 20; 
+
+-- Filter the new DataFrame or table created in Step 1 and create a new DataFrame or table to retrieve all the rows where the number of
+-- helpful_votes divided by total_votes is equal to or greater than 50%.
+
+SELECT * INTO VINE_TABLE_3 FROM VINE_TABLE_NEW WHERE CAST(HELPFUL_VOTES AS FLOAT)/CAST(TOTAL_VOTES AS FLOAT) >= 0.5;
+
+-- Filter the DataFrame or table created in Step 2, and create a new DataFrame or table that retrieves all the rows where a review was
+-- written as part of the Vine program (paid), vine == 'Y'.
+
+SELECT * INTO VINE_TABLE_PAID FROM VINE_TABLE_3 WHERE VINE = 'Y';
+
+-- Repeat Step 3, but this time retrieve all the rows where the review was not part of the Vine program (unpaid), vine == 'N'.
+
+SELECT * INTO VINE_TABLE_UNPAID FROM VINE_TABLE_3 WHERE VINE = 'N';
+
+-- Determine the total number of reviews, the number of 5-star reviews, and the percentage of 5-star reviews for the two types 
+-- of review (paid vs unpaid).
+
+-- The number of reviews
+SELECT COUNT(REVIEW_ID) INTO "TOTAL REVIEWS (PAID)" FROM VINE_TABLE_PAID;
+
+SELECT COUNT(REVIEW_ID) INTO "TOTAL REVIEWS (UNPAID)" FROM VINE_TABLE_UNPAID;
+
+-- The number of 5-star reviews
+SELECT COUNT(REVIEW_ID) INTO "5-STAR REVIEWS (PAID)" FROM VINE_TABLE_PAID WHERE STAR_RATING = 5; 
+
+SELECT COUNT(REVIEW_ID) INTO "5-STAR REVIEWS (UNPAID)" FROM VINE_TABLE_UNPAID WHERE STAR_RATING = 5;
+
+-- 5-star percentage
+SELECT (CAST((SELECT * FROM "5-STAR REVIEWS (PAID)") AS FLOAT))/(CAST((SELECT * FROM "TOTAL REVIEWS (PAID)") AS FLOAT))*100 AS "Percentage (PAID)";
+SELECT (CAST((SELECT * FROM "5-STAR REVIEWS (UNPAID)") AS FLOAT))/(CAST((SELECT * FROM "TOTAL REVIEWS (UNPAID)") AS FLOAT))*100 AS "Percentage (UNPAID)";
+
+
+
+
