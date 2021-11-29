@@ -10,7 +10,7 @@ In this project, there are approximately 50 datasets. Each one contains reviews 
 
 The below table summerizes the results:
 
-|Question|Answer|Supporting Figure|
+|Question|Answer|Supporting Figures|
 |--------|------|-----------------|
 |How many Vine reviews and non-Vine reviews were there?|613, 64968 respectively|![Capture 174](https://user-images.githubusercontent.com/59425631/137658128-9ea0cb3f-ee9a-4c38-a992-ae03852136de.PNG) ![Capture 175](https://user-images.githubusercontent.com/59425631/137658145-6f67cbae-e258-47fd-bee7-b577f2cfe6dc.PNG)|
 |How many Vine reviews were 5 stars? How many non-Vine reviews were 5 stars?|222, 30543 respectively|![Capture 176](https://user-images.githubusercontent.com/59425631/137658382-7145191c-ab68-4b6b-9c6e-58687c7930d6.PNG)![Capture 177](https://user-images.githubusercontent.com/59425631/137658393-edb9e294-aa25-4171-9f74-6fe235b86a55.PNG)|
