@@ -1,5 +1,3 @@
-# Amazon Vine Analysis Report
-
 ## Project Overview
 ---
 
